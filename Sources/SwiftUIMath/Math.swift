@@ -62,7 +62,8 @@ extension Math {
   }
 
   @_spi(Textual)
-  public func typographicBounds(
+  public static nonisolated func typographicBounds(
+    for latex: String,
     fitting proposal: ProposedViewSize,
     font: Font,
     style: TypesettingStyle
@@ -73,7 +74,7 @@ extension Math {
 
     return DisplayProvider.shared
       .display(
-        for: self.latex,
+        for: latex,
         font: font,
         style: style,
         proposedWidth: proposal.width ?? 0
