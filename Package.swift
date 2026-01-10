@@ -14,7 +14,9 @@ let package = Package(
   products: [
     .library(name: "SwiftUIMath", targets: ["SwiftUIMath"])
   ],
-  dependencies: [],
+  dependencies: [
+    .package(url: "https://github.com/pointfreeco/swift-snapshot-testing", from: "1.18.7")
+  ],
   targets: [
     .target(
       name: "SwiftUIMath",
@@ -23,7 +25,11 @@ let package = Package(
     ),
     .testTarget(
       name: "SwiftUIMathTests",
-      dependencies: ["SwiftUIMath"]
+      dependencies: [
+        "SwiftUIMath",
+        .product(name: "SnapshotTesting", package: "swift-snapshot-testing"),
+      ],
+      exclude: ["__Snapshots__"]
     ),
   ]
 )
