@@ -1,0 +1,9 @@
+blank_issues_enabled: false
+
+contact_links:
+  - name: Discussion
+    url: https://github.com/gonzalezreal/swiftui-math/discussions
+    about: SwiftUIMath Q&A, ideas, and feature requests
+  - name: Documentation
+    url: https://swiftpackageindex.com/gonzalezreal/swiftui-math/main/documentation/swiftuimath
+    about: Read documentation for SwiftUIMath
