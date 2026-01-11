@@ -1,5 +1,36 @@
 import SwiftUI
 
+/// Renders a LaTeX math expression using SwiftUI.
+///
+/// You can create a view with a LaTeX string; this is a good default for short expressions:
+///
+/// ```swift
+/// Math("x^2 + y^2 = z^2")
+/// ```
+///
+/// If you need inline vs display behavior, set the typesetting style:
+///
+/// ```swift
+/// Math("\\int_0^1 x^2\\,dx = \\frac{1}{3}")
+///   .mathTypesettingStyle(.text)
+///
+/// Math("\\frac{1}{2}+\\sqrt{2}")
+///   .mathTypesettingStyle(.display)
+/// ```
+///
+/// To customize the appearance, choose a bundled math font and size:
+///
+/// ```swift
+/// Math("\\sum_{i=1}^{n}x_i")
+///   .mathFont(Math.Font(name: .latinModern, size: 24))
+/// ```
+///
+/// For multicolor expressions, enable multicolor mode and use hex colors:
+///
+/// ```swift
+/// Math("\\color{#cc0000}{a}+\\color{#00aa00}{b}+\\color{#0000cc}{c}")
+///   .mathRenderingMode(.multicolor)
+/// ```
 public struct Math: View {
   @Environment(\.mathFont) private var font
   @Environment(\.mathTypesettingStyle) private var typesettingStyle
@@ -7,6 +38,8 @@ public struct Math: View {
 
   private let latex: String
 
+  /// Creates a math view that renders the given LaTeX string.
+  /// - Parameter latex: A LaTeX math expression.
   public init(_ latex: String) {
     self.latex = latex
   }
