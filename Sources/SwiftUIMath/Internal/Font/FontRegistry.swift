@@ -2,6 +2,7 @@
 @preconcurrency import CoreText
 import Foundation
 
+@available(iOS 17.0, *)
 extension Math {
   final class FontRegistry: Sendable {
     private struct Cache {
@@ -84,6 +85,7 @@ extension Math {
   }
 }
 
+@available(iOS 17.0, *)
 extension CGFont {
   fileprivate static func named(_ name: Math.Font.Name) -> CGFont? {
     guard
@@ -99,6 +101,7 @@ extension CGFont {
   }
 }
 
+@available(iOS 17.0, *)
 extension Math.FontTable {
   fileprivate static func named(_ name: Math.Font.Name) -> Math.FontTable? {
     guard

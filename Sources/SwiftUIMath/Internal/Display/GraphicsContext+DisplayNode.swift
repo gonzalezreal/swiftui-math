@@ -1,5 +1,6 @@
 import SwiftUI
 
+@available(iOS 17.0, *)
 extension GraphicsContext {
   func draw(_ displayNode: Math.DisplayNode, size: CGSize, foregroundColor: Color) {
     var context = self

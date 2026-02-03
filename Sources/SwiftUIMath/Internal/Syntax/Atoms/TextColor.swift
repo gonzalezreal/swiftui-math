@@ -1,5 +1,6 @@
 import Foundation
 
+@available(iOS 17.0, *)
 extension Math {
   final class TextColor: Atom {
     var colorString: String

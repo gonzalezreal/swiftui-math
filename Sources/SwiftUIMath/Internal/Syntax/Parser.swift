@@ -1,5 +1,6 @@
 import Foundation
 
+@available(iOS 17.0, *)
 extension Math {
   struct ParserError: Error {
     enum Code: Int {
@@ -24,6 +25,7 @@ extension Math {
   }
 }
 
+@available(iOS 17.0, *)
 extension Math {
   struct Parser {
     struct Environment {

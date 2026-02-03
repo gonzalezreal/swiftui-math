@@ -7,18 +7,22 @@ import Testing
 
 @Suite
 struct FontMetricsTests {
-  private let fontName: Math.Font.Name = .latinModern
+  @available(iOS 17.0, *)
+  private var fontName: Math.Font.Name { .latinModern }
 
+  @available(iOS 17.0, *)
   private func makePlatformFont(size: CGFloat = 20) throws -> Math.PlatformFont {
     try #require(Math.PlatformFont(font: Math.Font(name: fontName, size: size)))
   }
 
+  @available(iOS 17.0, *)
   @Test
   func loadsGraphicsFont() throws {
     let font = try #require(Math.FontRegistry.shared.graphicsFont(named: fontName))
     #expect(font.fullName != nil)
   }
 
+  @available(iOS 17.0, *)
   @Test
   func createsPlatformFontsAtDifferentSizes() throws {
     let font12 = try makePlatformFont(size: 12)
@@ -27,12 +31,14 @@ struct FontMetricsTests {
     #expect(CTFontGetSize(font24.ctFont) == 24)
   }
 
+  @available(iOS 17.0, *)
   @Test
   func metricsHavePositiveMathUnit() throws {
     let platformFont = try makePlatformFont()
     #expect(platformFont.metrics.mathUnit > 0)
   }
 
+  @available(iOS 17.0, *)
   @Test
   func verticalVariantsUseTableEntries() throws {
     let platformFont = try makePlatformFont()
@@ -44,6 +50,7 @@ struct FontMetricsTests {
     #expect(!variants.isEmpty)
   }
 
+  @available(iOS 17.0, *)
   @Test
   func horizontalVariantsUseTableEntries() throws {
     let platformFont = try makePlatformFont()
@@ -55,6 +62,7 @@ struct FontMetricsTests {
     #expect(!variants.isEmpty)
   }
 
+  @available(iOS 17.0, *)
   @Test
   func verticalAssemblyIsAvailableForExtensibleGlyphs() throws {
     let platformFont = try makePlatformFont()
@@ -66,6 +74,7 @@ struct FontMetricsTests {
     #expect(!assembly.isEmpty)
   }
 
+  @available(iOS 17.0, *)
   @Test
   func metricValuesAreFinite() throws {
     let platformFont = try makePlatformFont()

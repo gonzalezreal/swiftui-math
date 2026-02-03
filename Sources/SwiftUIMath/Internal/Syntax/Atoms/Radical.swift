@@ -1,5 +1,6 @@
 import Foundation
 
+@available(iOS 17.0, *)
 extension Math {
   final class Radical: Atom {
     var radicand: AtomList?

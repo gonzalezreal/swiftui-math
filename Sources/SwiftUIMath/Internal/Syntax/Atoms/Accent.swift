@@ -1,5 +1,6 @@
 import Foundation
 
+@available(iOS 17.0, *)
 extension Math {
   final class Accent: Atom {
     var innerList: AtomList?

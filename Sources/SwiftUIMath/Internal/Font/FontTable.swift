@@ -1,5 +1,6 @@
 import Foundation
 
+@available(iOS 17.0, *)
 extension Math {
   struct FontTable: Codable, Sendable {
     struct Assembly: Codable, Sendable {

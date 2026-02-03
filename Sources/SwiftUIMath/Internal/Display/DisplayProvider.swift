@@ -1,5 +1,6 @@
 import Foundation
 
+@available(iOS 17.0, *)
 extension Math {
   final class DisplayProvider: Sendable {
     private struct Cache {
@@ -99,6 +100,7 @@ extension Math {
   }
 }
 
+@available(iOS 17.0, *)
 extension Math.Style.Level {
   fileprivate init(_ typesettingStyle: Math.TypesettingStyle) {
     switch typesettingStyle {

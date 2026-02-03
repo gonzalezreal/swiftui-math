@@ -1,6 +1,7 @@
 import CoreGraphics
 import Foundation
 
+@available(iOS 17.0, *)
 extension Math {
   class DisplayNode {
     var ascent: CGFloat = 0

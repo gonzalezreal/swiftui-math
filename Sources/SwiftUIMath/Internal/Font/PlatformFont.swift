@@ -2,6 +2,7 @@
 @preconcurrency import CoreText
 import Foundation
 
+@available(iOS 17.0, *)
 extension Math {
   final class PlatformFont: Sendable {
     let font: Font

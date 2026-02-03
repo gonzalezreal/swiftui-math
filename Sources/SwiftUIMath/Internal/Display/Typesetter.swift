@@ -32,6 +32,7 @@ private func getInterElementSpaces() -> [[InterElementSpaceType]] {
 }
 
 // Get's the index for the given type. If row is true, the index is for the row (i.e. left element) otherwise it is for the column (right element)
+@available(iOS 17.0, *)
 func getInterElementSpaceArrayIndexForType(_ type: Math.AtomType, row: Bool) -> Int {
   switch type {
   case .color, .textColor, .colorBox, .ordinary, .placeholder:  // A placeholder is treated as ordinary
@@ -292,6 +293,7 @@ func getBlackboard(_ ch: Character) -> UTF32Char {
   return getDefaultStyle(ch)
 }
 
+@available(iOS 17.0, *)
 func styleCharacter(_ ch: Character, fontStyle: Math.Atom.FontStyle) -> UTF32Char {
   switch fontStyle {
   case .default:
@@ -317,6 +319,7 @@ func styleCharacter(_ ch: Character, fontStyle: Math.Atom.FontStyle) -> UTF32Cha
   }
 }
 
+@available(iOS 17.0, *)
 func changeFont(_ str: String, fontStyle: Math.Atom.FontStyle) -> String {
   var retval = ""
   let codes = Array(str)
@@ -339,6 +342,7 @@ func getBboxDetails(_ bbox: CGRect, ascent: inout CGFloat, descent: inout CGFloa
 
 // MARK: - Typesetter
 
+@available(iOS 17.0, *)
 extension Math {
   final class Typesetter {
     var font: PlatformFont!

@@ -1,5 +1,6 @@
 import Foundation
 
+@available(iOS 17.0, *)
 extension Math {
   enum AtomType: Int {
     // A number or text in ordinary format - Ord in TeX
@@ -64,6 +65,7 @@ extension Math {
   }
 }
 
+@available(iOS 17.0, *)
 extension Math.AtomType {
   var disallowsFollowingBinaryOperator: Bool {
     switch self {
@@ -79,12 +81,14 @@ extension Math.AtomType {
   }
 }
 
+@available(iOS 17.0, *)
 extension Math.AtomType: Comparable {
   static func < (lhs: Math.AtomType, rhs: Math.AtomType) -> Bool {
     lhs.rawValue < rhs.rawValue
   }
 }
 
+@available(iOS 17.0, *)
 extension Math.AtomType: CustomStringConvertible {
   var description: String {
     switch self {
@@ -116,6 +120,7 @@ extension Math.AtomType: CustomStringConvertible {
   }
 }
 
+@available(iOS 17.0, *)
 extension Math {
   class Atom: CustomStringConvertible {
     enum FontStyle: Int {
@@ -300,6 +305,7 @@ extension Math {
   }
 }
 
+@available(iOS 17.0, *)
 extension Math {
   final class AtomList {
     var atoms: [Atom]
@@ -389,18 +395,21 @@ extension Math {
   }
 }
 
+@available(iOS 17.0, *)
 extension Math.AtomList: CustomStringConvertible {
   var description: String {
     atoms.description
   }
 }
 
+@available(iOS 17.0, *)
 extension Math.AtomList {
   private func canAdd(_ atom: Math.Atom) -> Bool {
     atom.type != .boundary
   }
 }
 
+@available(iOS 17.0, *)
 extension Optional where Wrapped: Math.Atom {
   var disallowsFollowingBinaryOperator: Bool {
     guard case .some(let wrapped) = self else {

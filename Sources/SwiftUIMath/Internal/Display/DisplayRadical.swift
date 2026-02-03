@@ -1,6 +1,7 @@
 import CoreGraphics
 import Foundation
 
+@available(iOS 17.0, *)
 extension Math {
   final class DisplayRadical: DisplayNode {
     var radicand: DisplayList?

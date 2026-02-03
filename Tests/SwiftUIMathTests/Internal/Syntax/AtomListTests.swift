@@ -5,6 +5,7 @@ import Testing
 
 @Suite
 struct AtomListTests {
+  @available(iOS 17.0, *)
   @Test
   func parsesScriptsAndFinalizesAtomList() throws {
     let input = "-52x^{13+y}_{15-} + (-12.3 *)\\frac{-12}{15.2}"
@@ -15,6 +16,7 @@ struct AtomListTests {
     try assertFinalizedAtomListContents(list.finalized)
   }
 
+  @available(iOS 17.0, *)
   @Test
   func appendsAtomsInOrder() {
     let list = Math.AtomList()
@@ -32,6 +34,7 @@ struct AtomListTests {
     #expect(list.atoms[1] === second)
   }
 
+  @available(iOS 17.0, *)
   @Test
   func insertsAtomsAtIndices() {
     let list = Math.AtomList()
@@ -54,6 +57,7 @@ struct AtomListTests {
     #expect(list.atoms[2] === third)
   }
 
+  @available(iOS 17.0, *)
   @Test
   func appendsListContents() {
     let list1 = Math.AtomList()
@@ -79,6 +83,7 @@ struct AtomListTests {
     #expect(list1.atoms[4] === atom5)
   }
 
+  @available(iOS 17.0, *)
   @Test
   func removesLastAtom() {
     let list = Math.AtomList()
@@ -102,6 +107,7 @@ struct AtomListTests {
     #expect(list.atoms[0] === atom)
   }
 
+  @available(iOS 17.0, *)
   @Test
   func removesAtomAtIndex() {
     let list = Math.AtomList()
@@ -118,6 +124,7 @@ struct AtomListTests {
     #expect(!list.removeAtomForTesting(at: 2))
   }
 
+  @available(iOS 17.0, *)
   @Test
   func removesAtomsInRange() {
     let list = Math.AtomList()
@@ -136,6 +143,7 @@ struct AtomListTests {
     #expect(!list.removeAtomsForTesting(in: 1...3))
   }
 
+  @available(iOS 17.0, *)
   @Test
   func copiesAtomListsWithDistinctAtoms() throws {
     let list = Math.AtomList()
@@ -150,6 +158,7 @@ struct AtomListTests {
     try assertAtomListCopyMatches(copy, original: list, context: "atom list copy")
   }
 
+  @available(iOS 17.0, *)
   @Test
   func initializesAtomWithCorrectNucleusAndType() {
     var atom = Math.Atom(type: .open, value: "(")
@@ -161,6 +170,7 @@ struct AtomListTests {
     #expect(atom.type == .radical)
   }
 
+  @available(iOS 17.0, *)
   @Test
   func supportsScriptsWhenAllowed() {
     var atom = Math.Atom(type: .open, value: "(")
@@ -178,6 +188,7 @@ struct AtomListTests {
     #expect(atom.superscript == nil)
   }
 
+  @available(iOS 17.0, *)
   @Test
   func copiesAtomsWithScripts() throws {
     let list = Math.AtomList()
@@ -206,6 +217,7 @@ struct AtomListTests {
     )
   }
 
+  @available(iOS 17.0, *)
   @Test
   func copiesFraction() throws {
     let list = Math.AtomList()
@@ -240,6 +252,7 @@ struct AtomListTests {
     #expect(copy.rightDelimiter == "b")
   }
 
+  @available(iOS 17.0, *)
   @Test
   func copiesRadical() throws {
     let list = Math.AtomList()
@@ -269,6 +282,7 @@ struct AtomListTests {
     try assertAtomListCopyMatches(copy.degree, original: radical.degree, context: "degree copy")
   }
 
+  @available(iOS 17.0, *)
   @Test
   func copiesLargeOperator() throws {
     let largeOperator = Math.LargeOperator(limits: true)
@@ -281,6 +295,7 @@ struct AtomListTests {
     #expect(copy.limits == largeOperator.limits)
   }
 
+  @available(iOS 17.0, *)
   @Test
   func copiesInnerAtom() throws {
     let list = Math.AtomList()
@@ -316,6 +331,7 @@ struct AtomListTests {
     )
   }
 
+  @available(iOS 17.0, *)
   @Test
   func setsInnerBoundaries() {
     let inner = Math.Inner()
@@ -331,6 +347,7 @@ struct AtomListTests {
     #expect(inner.rightBoundary == nil)
   }
 
+  @available(iOS 17.0, *)
   @Test
   func copiesOverline() throws {
     let list = Math.AtomList()
@@ -354,6 +371,7 @@ struct AtomListTests {
     )
   }
 
+  @available(iOS 17.0, *)
   @Test
   func copiesUnderline() throws {
     let list = Math.AtomList()
@@ -377,6 +395,7 @@ struct AtomListTests {
     )
   }
 
+  @available(iOS 17.0, *)
   @Test
   func copiesAccent() throws {
     let list = Math.AtomList()
@@ -400,6 +419,7 @@ struct AtomListTests {
     )
   }
 
+  @available(iOS 17.0, *)
   @Test
   func copiesSpace() throws {
     let space = Math.Space(amount: 3)
@@ -410,6 +430,7 @@ struct AtomListTests {
     #expect(space.amount == copy.amount)
   }
 
+  @available(iOS 17.0, *)
   @Test
   func copiesStyle() throws {
     let style = Math.Style(level: .script)
@@ -420,6 +441,7 @@ struct AtomListTests {
     #expect(style.level == copy.level)
   }
 
+  @available(iOS 17.0, *)
   @Test
   func createsTableAtom() {
     let table = Math.Table()
@@ -465,6 +487,7 @@ struct AtomListTests {
     #expect(table.alignments[2] == .left)
   }
 
+  @available(iOS 17.0, *)
   @Test
   func copiesTableAtom() throws {
     let table = Math.Table()
@@ -503,11 +526,13 @@ struct AtomListTests {
     try assertAtomListCopyMatches(copy.cells[0][2], original: list2, context: "table list copy")
   }
 
+  @available(iOS 17.0, *)
   private func parseFinalizedAtomList(from input: String) throws -> Math.AtomList {
     let list = try #require(Math.Parser.build(fromString: input))
     return list.finalized
   }
 
+  @available(iOS 17.0, *)
   private func assertFinalizedAtomListContents(_ finalized: Math.AtomList) throws {
     #expect(finalized.atoms.count == 10, "Num atoms")
 
@@ -596,6 +621,7 @@ struct AtomListTests {
     try assertAtom(atom, type: .number, nucleus: "15.2", range: NSRange(location: 0, length: 4))
   }
 
+  @available(iOS 17.0, *)
   private func assertAtom(
     _ atom: Math.Atom,
     type: Math.AtomType,
@@ -607,6 +633,7 @@ struct AtomListTests {
     #expect(atom.indexRange == range)
   }
 
+  @available(iOS 17.0, *)
   private func assertAtomCopyMatches(
     _ copy: Math.Atom?,
     original: Math.Atom?,
@@ -619,6 +646,7 @@ struct AtomListTests {
     #expect(copy !== original, "\(context) identity")
   }
 
+  @available(iOS 17.0, *)
   private func assertAtomListCopyMatches(
     _ copy: Math.AtomList?,
     original: Math.AtomList?,
@@ -639,6 +667,7 @@ struct AtomListTests {
   }
 }
 
+@available(iOS 17.0, *)
 extension Math.AtomList {
   func removeLastAtomForTesting() {
     guard !atoms.isEmpty else { return }

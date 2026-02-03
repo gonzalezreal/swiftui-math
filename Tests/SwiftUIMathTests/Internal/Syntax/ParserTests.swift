@@ -5,6 +5,7 @@ import Testing
 
 @Suite
 struct ParserTests {
+  @available(iOS 17.0, *)
   func checkAtomTypes(_ list: Math.AtomList?, types: [Math.AtomType]) {
     if let list = list {
       #expect(list.atoms.count == types.count)
@@ -17,6 +18,7 @@ struct ParserTests {
     }
   }
 
+  @available(iOS 17.0, *)
   struct TestRecord {
     let build: String
     let atomType: [Math.AtomType]
@@ -36,6 +38,7 @@ struct ParserTests {
     }
   }
 
+  @available(iOS 17.0, *)
   func getTestData() -> [TestRecord] {
     [
       TestRecord(build: "x", atomType: [.variable], types: [], result: "x"),
@@ -80,6 +83,7 @@ struct ParserTests {
     ]
   }
 
+  @available(iOS 17.0, *)
   func getTestDataSuperscript() -> [TestRecord] {
     [
       TestRecord(build: "x^2", atomType: [.variable], types: [.number], result: "x^{2}"),
@@ -102,6 +106,7 @@ struct ParserTests {
     ]
   }
 
+  @available(iOS 17.0, *)
   func getTestDataSubscript() -> [TestRecord] {
     [
       TestRecord(build: "x_2", atomType: [.variable], types: [.number], result: "x_{2}"),
@@ -124,6 +129,7 @@ struct ParserTests {
     ]
   }
 
+  @available(iOS 17.0, *)
   func getTestDataSuperSubscript() -> [TestRecord] {
     [
       TestRecord(
@@ -146,6 +152,7 @@ struct ParserTests {
     ]
   }
 
+  @available(iOS 17.0, *)
   struct TestRecord2 {
     let build: String
     let type1: [Math.AtomType]
@@ -156,6 +163,7 @@ struct ParserTests {
     let result: String
   }
 
+  @available(iOS 17.0, *)
   func getTestDataLeftRight() -> [TestRecord2] {
     [
       TestRecord2(
@@ -207,6 +215,7 @@ struct ParserTests {
     ]
   }
 
+  @available(iOS 17.0, *)
   func getTestDataParseErrors() -> [(String, Math.ParserError.Code)] {
     return [
       ("}a", .mismatchedBraces),
@@ -247,6 +256,7 @@ struct ParserTests {
     ]
   }
 
+  @available(iOS 17.0, *)
   @Test
   func builder() throws {
     let data = getTestData()
@@ -264,6 +274,7 @@ struct ParserTests {
     }
   }
 
+  @available(iOS 17.0, *)
   @Test
   func superscript() throws {
     let data = getTestDataSuperscript()
@@ -298,6 +309,7 @@ struct ParserTests {
     }
   }
 
+  @available(iOS 17.0, *)
   @Test
   func `subscript`() throws {
     let data = getTestDataSubscript()
@@ -332,6 +344,7 @@ struct ParserTests {
     }
   }
 
+  @available(iOS 17.0, *)
   @Test
   func superSubscript() throws {
     let data = getTestDataSuperSubscript()
@@ -365,6 +378,7 @@ struct ParserTests {
     }
   }
 
+  @available(iOS 17.0, *)
   @Test
   func symbols() throws {
     let str = "5\\times3^{2\\div2}"
@@ -394,6 +408,7 @@ struct ParserTests {
     #expect(atom.nucleus == "2")
   }
 
+  @available(iOS 17.0, *)
   @Test
   func frac() throws {
     let str = "\\frac1c"
@@ -424,6 +439,7 @@ struct ParserTests {
     #expect(latex == "\\frac{1}{c}")
   }
 
+  @available(iOS 17.0, *)
   @Test
   func fracInFrac() throws {
     let str = "\\frac1\\frac23"
@@ -463,6 +479,7 @@ struct ParserTests {
     #expect(latex == "\\frac{1}{\\frac{2}{3}}")
   }
 
+  @available(iOS 17.0, *)
   @Test
   func sqrt() throws {
     let str = "\\sqrt2"
@@ -483,6 +500,7 @@ struct ParserTests {
     #expect(latex == "\\sqrt{2}")
   }
 
+  @available(iOS 17.0, *)
   @Test
   func sqrtInSqrt() throws {
     let str = "\\sqrt\\sqrt2"
@@ -509,6 +527,7 @@ struct ParserTests {
     #expect(latex == "\\sqrt{\\sqrt{2}}")
   }
 
+  @available(iOS 17.0, *)
   @Test
   func rad() throws {
     let str = "\\sqrt[3]2"
@@ -535,6 +554,7 @@ struct ParserTests {
     #expect(latex == "\\sqrt[3]{2}")
   }
 
+  @available(iOS 17.0, *)
   @Test
   func sqrtWithoutRadicand() throws {
     let str = "\\sqrt"
@@ -552,6 +572,7 @@ struct ParserTests {
     #expect(latex == "\\sqrt{}")
   }
 
+  @available(iOS 17.0, *)
   @Test
   func sqrtWithDegreeWithoutRadicand() throws {
     let str = "\\sqrt[3]"
@@ -574,6 +595,7 @@ struct ParserTests {
     #expect(latex == "\\sqrt[3]{}")
   }
 
+  @available(iOS 17.0, *)
   @Test
   func leftRight() throws {
     let data = getTestDataLeftRight()
@@ -608,6 +630,7 @@ struct ParserTests {
     }
   }
 
+  @available(iOS 17.0, *)
   @Test
   func over() throws {
     let str = "1 \\over c"
@@ -638,6 +661,7 @@ struct ParserTests {
     #expect(latex == "\\frac{1}{c}")
   }
 
+  @available(iOS 17.0, *)
   @Test
   func overInParens() throws {
     let str = "5 + {1 \\over c} + 8"
@@ -671,6 +695,7 @@ struct ParserTests {
     #expect(latex == "5+\\frac{1}{c}+8")
   }
 
+  @available(iOS 17.0, *)
   @Test
   func atop() throws {
     let str = "1 \\atop c"
@@ -701,6 +726,7 @@ struct ParserTests {
     #expect(latex == "{1 \\atop c}")
   }
 
+  @available(iOS 17.0, *)
   @Test
   func atopInParens() throws {
     let str = "5 + {1 \\atop c} + 8"
@@ -734,6 +760,7 @@ struct ParserTests {
     #expect(latex == "5+{1 \\atop c}+8")
   }
 
+  @available(iOS 17.0, *)
   @Test
   func choose() throws {
     let str = "n \\choose k"
@@ -764,6 +791,7 @@ struct ParserTests {
     #expect(latex == "{n \\choose k}")
   }
 
+  @available(iOS 17.0, *)
   @Test
   func brack() throws {
     let str = "n \\brack k"
@@ -794,6 +822,7 @@ struct ParserTests {
     #expect(latex == "{n \\brack k}")
   }
 
+  @available(iOS 17.0, *)
   @Test
   func brace() throws {
     let str = "n \\brace k"
@@ -824,6 +853,7 @@ struct ParserTests {
     #expect(latex == "{n \\brace k}")
   }
 
+  @available(iOS 17.0, *)
   @Test
   func binom() throws {
     let str = "\\binom{n}{k}"
@@ -854,6 +884,7 @@ struct ParserTests {
     #expect(latex == "{n \\choose k}")
   }
 
+  @available(iOS 17.0, *)
   @Test
   func overLine() throws {
     let str = "\\overline 2"
@@ -874,6 +905,7 @@ struct ParserTests {
     #expect(latex == "\\overline{2}")
   }
 
+  @available(iOS 17.0, *)
   @Test
   func underline() throws {
     let str = "\\underline 2"
@@ -894,6 +926,7 @@ struct ParserTests {
     #expect(latex == "\\underline{2}")
   }
 
+  @available(iOS 17.0, *)
   @Test
   func accent() throws {
     let str = "\\bar x"
@@ -914,6 +947,7 @@ struct ParserTests {
     #expect(latex == "\\bar{x}")
   }
 
+  @available(iOS 17.0, *)
   @Test
   func accentedCharacter() throws {
     let str = "\u{00E1}"
@@ -934,6 +968,7 @@ struct ParserTests {
     #expect(latex == "\\acute{a}")
   }
 
+  @available(iOS 17.0, *)
   @Test
   func mathSpace() throws {
     let str = "\\!"
@@ -949,6 +984,7 @@ struct ParserTests {
     #expect(latex == "\\! ")
   }
 
+  @available(iOS 17.0, *)
   @Test
   func mathStyle() throws {
     let str = "\\textstyle y \\scriptstyle x"
@@ -969,6 +1005,7 @@ struct ParserTests {
     #expect(latex == "\\textstyle y\\scriptstyle x")
   }
 
+  @available(iOS 17.0, *)
   @Test
   func matrix() throws {
     let str = "\\begin{matrix} x & y \\\\ z & w \\end{matrix}"
@@ -1003,6 +1040,7 @@ struct ParserTests {
     #expect(latex == "\\begin{matrix}x&y\\\\ z&w\\end{matrix}")
   }
 
+  @available(iOS 17.0, *)
   @Test
   func pMatrix() throws {
     let str = "\\begin{pmatrix} x & y \\\\ z & w \\end{pmatrix}"
@@ -1052,6 +1090,7 @@ struct ParserTests {
     #expect(latex == "\\left( \\begin{matrix}x&y\\\\ z&w\\end{matrix}\\right) ")
   }
 
+  @available(iOS 17.0, *)
   @Test
   func defaultTable() throws {
     let str = "x \\\\ y"
@@ -1082,6 +1121,7 @@ struct ParserTests {
     #expect(latex == "x\\\\ y")
   }
 
+  @available(iOS 17.0, *)
   @Test
   func defaultTableWithCols() throws {
     let str = "x & y \\\\ z & w"
@@ -1112,6 +1152,7 @@ struct ParserTests {
     #expect(latex == "x&y\\\\ z&w")
   }
 
+  @available(iOS 17.0, *)
   @Test
   func eqalign() throws {
     let str1 = "\\begin{eqalign}x&y\\\\ z&w\\end{eqalign}"
@@ -1150,6 +1191,7 @@ struct ParserTests {
     }
   }
 
+  @available(iOS 17.0, *)
   @Test
   func displayLines() throws {
     let str1 = "\\begin{displaylines}x\\\\ y\\end{displaylines}"
@@ -1182,6 +1224,7 @@ struct ParserTests {
     }
   }
 
+  @available(iOS 17.0, *)
   @Test
   func errors() throws {
     let data = getTestDataParseErrors()
@@ -1196,6 +1239,7 @@ struct ParserTests {
     }
   }
 
+  @available(iOS 17.0, *)
   @Test
   func custom() throws {
     let str = "\\lcm(a,b)"
@@ -1226,6 +1270,7 @@ struct ParserTests {
     #expect(latex == "\\lcm (a,b)")
   }
 
+  @available(iOS 17.0, *)
   @Test
   func fontSingle() throws {
     let str = "\\mathbf x"
@@ -1241,6 +1286,7 @@ struct ParserTests {
     #expect(latex == "\\mathbf{x}")
   }
 
+  @available(iOS 17.0, *)
   @Test
   func fontOneChar() throws {
     let str = "\\cal xy"
@@ -1261,6 +1307,7 @@ struct ParserTests {
     #expect(latex == "\\mathcal{x}y")
   }
 
+  @available(iOS 17.0, *)
   @Test
   func fontMultipleChars() throws {
     let str = "\\frak{xy}"
@@ -1281,6 +1328,7 @@ struct ParserTests {
     #expect(latex == "\\mathfrak{xy}")
   }
 
+  @available(iOS 17.0, *)
   @Test
   func fontOneCharInside() throws {
     let str = "\\sqrt \\mathrm x y"
@@ -1307,6 +1355,7 @@ struct ParserTests {
     #expect(latex == "\\sqrt{\\mathrm{x}}y")
   }
 
+  @available(iOS 17.0, *)
   @Test
   func text() throws {
     let str = "\\text{x y}"
@@ -1331,6 +1380,7 @@ struct ParserTests {
     #expect(latex == "\\mathrm{x\\  y}")
   }
 
+  @available(iOS 17.0, *)
   @Test
   func limits() throws {
     // Int with no limits (default)
@@ -1358,6 +1408,7 @@ struct ParserTests {
     #expect(latex == "\\int \\limits ")
   }
 
+  @available(iOS 17.0, *)
   @Test
   func noLimits() throws {
     // Sum with limits (default)
@@ -1387,6 +1438,7 @@ struct ParserTests {
 
   // MARK: - Inline and Display Math Delimiter Tests
 
+  @available(iOS 17.0, *)
   @Test
   func inlineMathDollar() throws {
     let str = "$x^2$"
@@ -1406,6 +1458,7 @@ struct ParserTests {
     #expect(foundVariable)
   }
 
+  @available(iOS 17.0, *)
   @Test
   func inlineMathParens() throws {
     let str = "\\(E=mc^2\\)"
@@ -1423,6 +1476,7 @@ struct ParserTests {
     #expect(foundEquals)
   }
 
+  @available(iOS 17.0, *)
   @Test
   func inlineMathWithCases() throws {
     let str = "\\(\\begin{cases} x + y = 5 \\\\ 2x - y = 1 \\end{cases}\\)"
@@ -1451,6 +1505,7 @@ struct ParserTests {
     #expect(foundInner)
   }
 
+  @available(iOS 17.0, *)
   @Test
   func inlineMathVectorDot() throws {
     let str = "$\\vec{a} \\cdot \\vec{b}$"
@@ -1473,6 +1528,7 @@ struct ParserTests {
     #expect(hasCdot)
   }
 
+  @available(iOS 17.0, *)
   @Test
   func displayMathDoubleDollar() throws {
     let str = "$$x^2 + y^2 = z^2$$"
@@ -1484,6 +1540,7 @@ struct ParserTests {
     #expect(firstAtom?.type != .style)
   }
 
+  @available(iOS 17.0, *)
   @Test
   func displayMathBrackets() throws {
     let str = "\\[\\sum_{i=1}^{n} i = \\frac{n(n+1)}{2}\\]"
@@ -1502,6 +1559,7 @@ struct ParserTests {
     #expect(foundSum)
   }
 
+  @available(iOS 17.0, *)
   @Test
   func displayMathCasesWithoutDelimiters() throws {
     // This should work as before (backward compatibility)
@@ -1532,6 +1590,7 @@ struct ParserTests {
     #expect(foundTable)
   }
 
+  @available(iOS 17.0, *)
   @Test
   func backwardCompatibilityNoDelimiters() throws {
     // Test that expressions without delimiters still work
@@ -1540,6 +1599,7 @@ struct ParserTests {
     #expect(try #require(list).atoms.count >= 5)
   }
 
+  @available(iOS 17.0, *)
   @Test
   func emptyInlineMath() throws {
     let str = "$$$"  // This is $$$ which should be treated as $$ + $
@@ -1549,6 +1609,7 @@ struct ParserTests {
     #expect(list == nil || list?.atoms.isEmpty == true)
   }
 
+  @available(iOS 17.0, *)
   @Test
   func emptyDisplayMath() throws {
     let str = "\\[\\]"
@@ -1558,6 +1619,7 @@ struct ParserTests {
     #expect(list == nil || list?.atoms.isEmpty == true)
   }
 
+  @available(iOS 17.0, *)
   @Test
   func dollarInMath() throws {
     // Test that delimiters are properly stripped
@@ -1570,6 +1632,7 @@ struct ParserTests {
     }
   }
 
+  @available(iOS 17.0, *)
   @Test
   func complexInlineExpression() throws {
     let str = "$\\frac{1}{2} + \\sqrt{3}$"
@@ -1592,6 +1655,7 @@ struct ParserTests {
     #expect(hasRadical)
   }
 
+  @available(iOS 17.0, *)
   @Test
   func inlineMathStyleForcing() throws {
     // Inline math should have textstyle prepended
@@ -1607,6 +1671,7 @@ struct ParserTests {
 
   // MARK: - Tests for build(fromString:error:) API with delimiters
 
+  @available(iOS 17.0, *)
   @Test
   func inlineMathDollarWithError() throws {
     let str = "$x^2$"
@@ -1626,6 +1691,7 @@ struct ParserTests {
     #expect(foundVariable)
   }
 
+  @available(iOS 17.0, *)
   @Test
   func inlineMathParensWithError() throws {
     let str = "\\(E=mc^2\\)"
@@ -1645,6 +1711,7 @@ struct ParserTests {
     #expect(foundEquals)
   }
 
+  @available(iOS 17.0, *)
   @Test
   func inlineMathWithCasesWithError() throws {
     let str = "\\(\\begin{cases} x + y = 5 \\\\ 2x - y = 1 \\end{cases}\\)"
@@ -1674,6 +1741,7 @@ struct ParserTests {
     #expect(foundInner)
   }
 
+  @available(iOS 17.0, *)
   @Test
   func displayMathDoubleDollarWithError() throws {
     let str = "$$x^2 + y^2 = z^2$$"
@@ -1683,6 +1751,7 @@ struct ParserTests {
     #expect(try #require(list).atoms.count >= 5)
   }
 
+  @available(iOS 17.0, *)
   @Test
   func displayMathBracketsWithError() throws {
     let str = "\\[\\sum_{i=1}^{n} i = \\frac{n(n+1)}{2}\\]"
@@ -1703,6 +1772,7 @@ struct ParserTests {
     #expect(foundSum)
   }
 
+  @available(iOS 17.0, *)
   @Test
   func displayMathCasesWithoutDelimitersWithError() throws {
     let str = "\\begin{cases} x + y = 5 \\\\ 2x - y = 1 \\end{cases}"
@@ -1734,6 +1804,7 @@ struct ParserTests {
     #expect(foundTable)
   }
 
+  @available(iOS 17.0, *)
   @Test
   func backwardCompatibilityNoDelimitersWithError() throws {
     let str = "x^2 + y^2 = z^2"
@@ -1743,6 +1814,7 @@ struct ParserTests {
     #expect(try #require(list).atoms.count >= 5)
   }
 
+  @available(iOS 17.0, *)
   @Test
   func invalidLatexWithError() throws {
     let str = "$\\notacommand$"
@@ -1754,6 +1826,7 @@ struct ParserTests {
     #expect(error?.code == .invalidCommand)
   }
 
+  @available(iOS 17.0, *)
   @Test
   func mismatchedBracesWithError() throws {
     let str = "${x+2$"
@@ -1765,6 +1838,7 @@ struct ParserTests {
     #expect(error?.code == .mismatchedBraces)
   }
 
+  @available(iOS 17.0, *)
   @Test
   func complexInlineExpressionWithError() throws {
     let str = "$\\frac{1}{2} + \\sqrt{3}$"
@@ -1789,6 +1863,7 @@ struct ParserTests {
     #expect(hasRadical)
   }
 
+  @available(iOS 17.0, *)
   @Test
   func inlineMathVectorDotWithError() throws {
     let str = "$\\vec{a} \\cdot \\vec{b}$"
@@ -1815,6 +1890,7 @@ struct ParserTests {
 
   // MARK: - Comprehensive Command Coverage Tests
 
+  @available(iOS 17.0, *)
   @Test
   func greekLettersLowercase() throws {
     let commands = [
@@ -1834,6 +1910,7 @@ struct ParserTests {
     }
   }
 
+  @available(iOS 17.0, *)
   @Test
   func greekLettersUppercase() throws {
     let commands = [
@@ -1851,6 +1928,7 @@ struct ParserTests {
     }
   }
 
+  @available(iOS 17.0, *)
   @Test
   func binaryOperators() throws {
     let operators = [
@@ -1879,6 +1957,7 @@ struct ParserTests {
     }
   }
 
+  @available(iOS 17.0, *)
   @Test
   func relations() throws {
     let relations = [
@@ -1907,6 +1986,7 @@ struct ParserTests {
     }
   }
 
+  @available(iOS 17.0, *)
   @Test
   func allAccents() throws {
     let accents = ["hat", "tilde", "bar", "dot", "ddot", "check", "grave", "acute", "breve", "vec"]
@@ -1931,6 +2011,7 @@ struct ParserTests {
     }
   }
 
+  @available(iOS 17.0, *)
   @Test
   func delimiterPairs() throws {
     let delimiterPairs = [
@@ -1961,6 +2042,7 @@ struct ParserTests {
     }
   }
 
+  @available(iOS 17.0, *)
   @Test
   func largeOperators() throws {
     let operators = [
@@ -1988,6 +2070,7 @@ struct ParserTests {
     }
   }
 
+  @available(iOS 17.0, *)
   @Test
   func arrows() throws {
     let arrows = [
@@ -2017,6 +2100,7 @@ struct ParserTests {
     }
   }
 
+  @available(iOS 17.0, *)
   @Test
   func trigonometricFunctions() throws {
     let functions = [
@@ -2044,6 +2128,7 @@ struct ParserTests {
     }
   }
 
+  @available(iOS 17.0, *)
   @Test
   func limitOperators() throws {
     let operators = ["lim", "limsup", "liminf", "max", "min", "sup", "inf", "det", "gcd"]
@@ -2068,6 +2153,7 @@ struct ParserTests {
     }
   }
 
+  @available(iOS 17.0, *)
   @Test
   func specialSymbols() throws {
     let symbols = [
@@ -2087,6 +2173,7 @@ struct ParserTests {
     }
   }
 
+  @available(iOS 17.0, *)
   @Test
   func logFunctions() throws {
     let logFuncs = ["log", "ln", "lg"]
@@ -2101,6 +2188,7 @@ struct ParserTests {
 
   // MARK: - High Priority Missing Features Tests
 
+  @available(iOS 17.0, *)
   @Test
   func displayStyle() throws {
     // Test \displaystyle and \textstyle commands
@@ -2124,6 +2212,7 @@ struct ParserTests {
     }
   }
 
+  @available(iOS 17.0, *)
   @Test
   func middleDelimiter() throws {
     // Test \middle command for delimiters in the middle of expressions
@@ -2146,6 +2235,7 @@ struct ParserTests {
     }
   }
 
+  @available(iOS 17.0, *)
   @Test
   func substack() throws {
     // Test \substack for multi-line subscripts and limits
@@ -2189,6 +2279,7 @@ struct ParserTests {
     }
   }
 
+  @available(iOS 17.0, *)
   @Test
   func manualDelimiterSizing() throws {
     // Test \big, \Big, \bigg, \Bigg sizing commands
@@ -2213,6 +2304,7 @@ struct ParserTests {
     }
   }
 
+  @available(iOS 17.0, *)
   @Test
   func spacingCommands() throws {
     // Test fine-tuned spacing commands
@@ -2240,6 +2332,7 @@ struct ParserTests {
 
   // MARK: - Medium Priority Missing Features Tests
 
+  @available(iOS 17.0, *)
   @Test
   func multipleIntegrals() throws {
     // Test \iint, \iiint, \iiiint for multiple integrals
@@ -2272,6 +2365,7 @@ struct ParserTests {
     }
   }
 
+  @available(iOS 17.0, *)
   @Test
   func continuedFractions() throws {
     // Test \cfrac for continued fractions (already added but verify)
@@ -2295,6 +2389,7 @@ struct ParserTests {
     }
   }
 
+  @available(iOS 17.0, *)
   @Test
   func displayStyleFraction() throws {
     // Test \dfrac - display-style fraction
@@ -2330,6 +2425,7 @@ struct ParserTests {
     }
   }
 
+  @available(iOS 17.0, *)
   @Test
   func textStyleFraction() throws {
     // Test \tfrac - text-style fraction
@@ -2364,6 +2460,7 @@ struct ParserTests {
     }
   }
 
+  @available(iOS 17.0, *)
   @Test
   func displayAndTextStyleFractions() throws {
     // Test the original LaTeX from the user's issue
@@ -2402,6 +2499,7 @@ struct ParserTests {
     #expect(nestedList != nil)
   }
 
+  @available(iOS 17.0, *)
   @Test
   func boldsymbol() throws {
     // Test \boldsymbol for bold Greek letters
@@ -2425,6 +2523,7 @@ struct ParserTests {
     }
   }
 
+  @available(iOS 17.0, *)
   @Test
   func starredMatrices() throws {
     // Test starred matrix environments with alignment
@@ -2470,6 +2569,7 @@ struct ParserTests {
     }
   }
 
+  @available(iOS 17.0, *)
   @Test
   func smallMatrix() throws {
     // Test \smallmatrix for inline matrices

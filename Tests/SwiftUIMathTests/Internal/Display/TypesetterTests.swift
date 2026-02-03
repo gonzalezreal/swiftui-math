@@ -15,11 +15,13 @@ extension CGPoint {
 @Suite
 struct TypesetterTests {
 
+  @available(iOS 17.0, *)
   func makeFont(name: Math.Font.Name = .latinModern, size: CGFloat = 20) throws -> Math.PlatformFont
   {
     try #require(Math.PlatformFont(font: Math.Font(name: name, size: size)))
   }
 
+  @available(iOS 17.0, *)
   @Test
   func simpleVariable() throws {
     let font = try makeFont()
@@ -53,6 +55,7 @@ struct TypesetterTests {
     #expect(abs(display.width - 11.44) <= 0.01)
   }
 
+  @available(iOS 17.0, *)
   @Test
   func multipleVariables() throws {
     let font = try makeFont()
@@ -84,6 +87,7 @@ struct TypesetterTests {
     #expect(abs(display.width - 44.86) <= 0.01)
   }
 
+  @available(iOS 17.0, *)
   @Test
   func variablesAndNumbers() throws {
     let font = try makeFont()
@@ -115,6 +119,7 @@ struct TypesetterTests {
     #expect(abs(display.width - 45.56) <= 0.01)
   }
 
+  @available(iOS 17.0, *)
   @Test
   func equationWithOperatorsAndRelations() throws {
     let font = try makeFont()
@@ -146,6 +151,7 @@ struct TypesetterTests {
     #expect(abs(display.width - 92.36) <= 0.01)
   }
 
+  @available(iOS 17.0, *)
   @Test
   func superscript() throws {
     let font = try makeFont()
@@ -197,6 +203,7 @@ struct TypesetterTests {
     #expect(abs(display.width - 18.44) <= 0.01)
   }
 
+  @available(iOS 17.0, *)
   @Test
   func subscriptAtom() throws {
     let font = try makeFont()
@@ -248,6 +255,7 @@ struct TypesetterTests {
     #expect(abs(display.width - 18.44) <= 0.01)
   }
 
+  @available(iOS 17.0, *)
   @Test
   func supersubscript() throws {
     let font = try makeFont()
@@ -321,6 +329,7 @@ struct TypesetterTests {
     #expect(abs(display.width - 18.44) <= 0.01)
   }
 
+  @available(iOS 17.0, *)
   @Test
   func radical() throws {
     let font = try makeFont()
@@ -371,6 +380,7 @@ struct TypesetterTests {
     #expect(abs(display.width - 26.66) <= 0.01)
   }
 
+  @available(iOS 17.0, *)
   @Test
   func radicalWithDegree() throws {
     let font = try makeFont()
@@ -441,6 +451,7 @@ struct TypesetterTests {
     #expect(abs(display.width - 26.66) <= 0.01)
   }
 
+  @available(iOS 17.0, *)
   @Test
   func fraction() throws {
     let font = try makeFont()
@@ -511,6 +522,7 @@ struct TypesetterTests {
     #expect(abs(display.width - 10) <= 0.01)
   }
 
+  @available(iOS 17.0, *)
   @Test
   func atop() throws {
     let font = try makeFont()
@@ -581,6 +593,7 @@ struct TypesetterTests {
     #expect(abs(display.width - 10) <= 0.01)
   }
 
+  @available(iOS 17.0, *)
   @Test
   func binomial() throws {
     let font = try makeFont()
@@ -677,6 +690,7 @@ struct TypesetterTests {
     #expect(abs(display.width - 39.44) <= 0.001)
   }
 
+  @available(iOS 17.0, *)
   @Test
   func largeOpNoLimitsText() throws {
     let font = try makeFont()
@@ -717,6 +731,7 @@ struct TypesetterTests {
     #expect(display.width < 70)
   }
 
+  @available(iOS 17.0, *)
   @Test
   func largeOpNoLimitsSymbol() throws {
     let font = try makeFont()
@@ -758,6 +773,7 @@ struct TypesetterTests {
     #expect(display.width < 40)
   }
 
+  @available(iOS 17.0, *)
   @Test
   func largeOpNoLimitsSymbolWithScripts() throws {
     let font = try makeFont()
@@ -841,6 +857,7 @@ struct TypesetterTests {
     #expect(display.width < 48)
   }
 
+  @available(iOS 17.0, *)
   @Test
   func largeOpWithLimitsTextWithScripts() throws {
     let font = try makeFont()
@@ -901,6 +918,7 @@ struct TypesetterTests {
     #expect(display.width < 48)
   }
 
+  @available(iOS 17.0, *)
   @Test
   func largeOpWithLimitsSymboltWithScripts() throws {
     let font = try makeFont()
@@ -977,6 +995,7 @@ struct TypesetterTests {
     #expect(display.width > 40)
   }
 
+  @available(iOS 17.0, *)
   @Test
   func largeOpWithLimitsInlineMode_Limit() throws {
     let font = try makeFont()
@@ -1004,6 +1023,7 @@ struct TypesetterTests {
     }
   }
 
+  @available(iOS 17.0, *)
   @Test
   func largeOpWithLimitsInlineMode_Sum() throws {
     let font = try makeFont()
@@ -1032,6 +1052,7 @@ struct TypesetterTests {
     }
   }
 
+  @available(iOS 17.0, *)
   @Test
   func largeOpWithLimitsInlineMode_Product() throws {
     let font = try makeFont()
@@ -1060,6 +1081,7 @@ struct TypesetterTests {
     }
   }
 
+  @available(iOS 17.0, *)
   @Test
   func fractionInlineMode_NormalFontSize() throws {
     let font = try makeFont()
@@ -1093,6 +1115,7 @@ struct TypesetterTests {
     }
   }
 
+  @available(iOS 17.0, *)
   @Test
   func fractionInlineDelimiters_NormalSize() throws {
     let font = try makeFont()
@@ -1118,6 +1141,7 @@ struct TypesetterTests {
     #expect(fracDisplay!.numerator!.ascent > 6)
   }
 
+  @available(iOS 17.0, *)
   @Test
   func complexFractionInlineMode() throws {
     let font = try makeFont()
@@ -1145,6 +1169,7 @@ struct TypesetterTests {
     }
   }
 
+  @available(iOS 17.0, *)
   @Test
   func inner() throws {
     let font = try makeFont()
@@ -1219,6 +1244,7 @@ struct TypesetterTests {
     #expect(abs(display.width - 27) <= 0.01)
   }
 
+  @available(iOS 17.0, *)
   @Test
   func overline() throws {
     let font = try makeFont()
@@ -1268,6 +1294,7 @@ struct TypesetterTests {
     #expect(abs(display.width - 10) <= 0.01)
   }
 
+  @available(iOS 17.0, *)
   @Test
   func underline() throws {
     let font = try makeFont()
@@ -1317,6 +1344,7 @@ struct TypesetterTests {
     #expect(abs(display.width - 10) <= 0.01)
   }
 
+  @available(iOS 17.0, *)
   @Test
   func spacing() throws {
     let font = try makeFont()
@@ -1367,6 +1395,7 @@ struct TypesetterTests {
   }
 
   // For issue: https://github.com/kostub/iosMath/issues/5
+  @available(iOS 17.0, *)
   @Test
   func largeRadicalDescent() throws {
     let font = try makeFont()
@@ -1380,6 +1409,7 @@ struct TypesetterTests {
     #expect(abs(display.width - 85.569) <= 0.01)
   }
 
+  @available(iOS 17.0, *)
   @Test
   func mathTable() throws {
     let font = try makeFont()
@@ -1459,6 +1489,7 @@ struct TypesetterTests {
     }
   }
 
+  @available(iOS 17.0, *)
   @Test
   func latexSymbols() throws {
     let font = try makeFont()
@@ -1517,7 +1548,8 @@ struct TypesetterTests {
       #expect(display.width > 0)
     }
   }
-
+  
+  @available(iOS 17.0, *)
   func atomWithAllFontStyles(_ atom: Math.Atom) throws {
     let font = try makeFont()
     let fontStyles: [Math.Atom.FontStyle] = [
@@ -1567,6 +1599,7 @@ struct TypesetterTests {
     }
   }
 
+  @available(iOS 17.0, *)
   @Test
   func variables() throws {
     // Test all variables
@@ -1586,6 +1619,7 @@ struct TypesetterTests {
     }
   }
 
+  @available(iOS 17.0, *)
   @Test
   func styleChanges() throws {
     let font = try makeFont()
@@ -1611,6 +1645,7 @@ struct TypesetterTests {
     #expect(originalDisplay.descent > display.descent)
   }
 
+  @available(iOS 17.0, *)
   @Test
   func styleMiddle() throws {
     let font = try makeFont()
@@ -1655,6 +1690,7 @@ struct TypesetterTests {
     #expect(!(line2.hasScript))
   }
 
+  @available(iOS 17.0, *)
   @Test
   func accent() throws {
     let font = try makeFont()
@@ -1710,6 +1746,7 @@ struct TypesetterTests {
     #expect(abs(display.width - 11.44) <= 0.01)
   }
 
+  @available(iOS 17.0, *)
   @Test
   func wideAccent() throws {
     let font = try makeFont()
@@ -1765,6 +1802,7 @@ struct TypesetterTests {
 
   // MARK: - Interatom Line Breaking Tests
 
+  @available(iOS 17.0, *)
   @Test
   func interatomLineBreaking_SimpleEquation() throws {
     let font = try makeFont()
@@ -1794,6 +1832,7 @@ struct TypesetterTests {
     }
   }
 
+  @available(iOS 17.0, *)
   @Test
   func interatomLineBreaking_TextAndMath() throws {
     let font = try makeFont()
@@ -1828,6 +1867,7 @@ struct TypesetterTests {
     }
   }
 
+  @available(iOS 17.0, *)
   @Test
   func interatomLineBreaking_BreaksAtAtomBoundaries() throws {
     let font = try makeFont()
@@ -1852,6 +1892,7 @@ struct TypesetterTests {
     }
   }
 
+  @available(iOS 17.0, *)
   @Test
   func interatomLineBreaking_WithSuperscripts() throws {
     let font = try makeFont()
@@ -1870,6 +1911,7 @@ struct TypesetterTests {
     }
   }
 
+  @available(iOS 17.0, *)
   @Test
   func interatomLineBreaking_NoBreakingWhenNotNeeded() throws {
     let font = try makeFont()
@@ -1888,6 +1930,7 @@ struct TypesetterTests {
     #expect(display!.width < maxWidth)
   }
 
+  @available(iOS 17.0, *)
   @Test
   func interatomLineBreaking_BreaksAfterOperators() throws {
     let font = try makeFont()
@@ -1911,6 +1954,7 @@ struct TypesetterTests {
 
   // MARK: - Complex Display Line Breaking Tests (Fractions & Radicals)
 
+  @available(iOS 17.0, *)
   @Test
   func complexDisplay_FractionStaysInlineWhenFits() throws {
     let font = try makeFont()
@@ -1936,6 +1980,7 @@ struct TypesetterTests {
     #expect(display!.width < maxWidth)
   }
 
+  @available(iOS 17.0, *)
   @Test
   func complexDisplay_FractionBreaksWhenTooWide() throws {
     let font = try makeFont()
@@ -1958,6 +2003,7 @@ struct TypesetterTests {
     }
   }
 
+  @available(iOS 17.0, *)
   @Test
   func complexDisplay_RadicalStaysInlineWhenFits() throws {
     let font = try makeFont()
@@ -1983,6 +2029,7 @@ struct TypesetterTests {
     #expect(display!.width < maxWidth)
   }
 
+  @available(iOS 17.0, *)
   @Test
   func complexDisplay_RadicalBreaksWhenTooWide() throws {
     let font = try makeFont()
@@ -2005,6 +2052,7 @@ struct TypesetterTests {
     }
   }
 
+  @available(iOS 17.0, *)
   @Test
   func complexDisplay_MixedFractionsAndRadicals() throws {
     let font = try makeFont()
@@ -2024,6 +2072,7 @@ struct TypesetterTests {
     }
   }
 
+  @available(iOS 17.0, *)
   @Test
   func complexDisplay_FractionWithComplexNumerator() throws {
     let font = try makeFont()
@@ -2040,6 +2089,7 @@ struct TypesetterTests {
     #expect(display!.width < maxWidth * 1.5)
   }
 
+  @available(iOS 17.0, *)
   @Test
   func complexDisplay_RadicalWithDegree() throws {
     let font = try makeFont()
@@ -2056,6 +2106,7 @@ struct TypesetterTests {
     #expect(display!.width < maxWidth * 1.2)
   }
 
+  @available(iOS 17.0, *)
   @Test
   func complexDisplay_NoBreakingWithoutWidthConstraint() throws {
     let font = try makeFont()
@@ -2084,6 +2135,7 @@ struct TypesetterTests {
 
   // MARK: - Additional Recommended Tests
 
+  @available(iOS 17.0, *)
   @Test
   func edgeCase_VeryNarrowWidth() throws {
     let font = try makeFont()
@@ -2107,6 +2159,7 @@ struct TypesetterTests {
     }
   }
 
+  @available(iOS 17.0, *)
   @Test
   func edgeCase_VeryWideAtom() throws {
     let font = try makeFont()
@@ -2126,6 +2179,7 @@ struct TypesetterTests {
     // (no way to break it further)
   }
 
+  @available(iOS 17.0, *)
   @Test
   func mixedScriptsAndNonScripts() throws {
     let font = try makeFont()
@@ -2144,6 +2198,7 @@ struct TypesetterTests {
     }
   }
 
+  @available(iOS 17.0, *)
   @Test
   func multipleLineBreaks() throws {
     let font = try makeFont()
@@ -2175,6 +2230,7 @@ struct TypesetterTests {
     }
   }
 
+  @available(iOS 17.0, *)
   @Test
   func unicodeTextWrapping() throws {
     let font = try makeFont()
@@ -2196,6 +2252,7 @@ struct TypesetterTests {
     }
   }
 
+  @available(iOS 17.0, *)
   @Test
   func numberProtection() throws {
     let font = try makeFont()
@@ -2214,6 +2271,7 @@ struct TypesetterTests {
 
   // MARK: - Tests for Not-Yet-Optimized Cases (Document Current Behavior)
 
+  @available(iOS 17.0, *)
   @Test
   func currentBehavior_LargeOperators() throws {
     let font = try makeFont()
@@ -2230,6 +2288,7 @@ struct TypesetterTests {
     // This test documents current behavior for future improvement
   }
 
+  @available(iOS 17.0, *)
   @Test
   func currentBehavior_NestedDelimiters() throws {
     let font = try makeFont()
@@ -2246,6 +2305,7 @@ struct TypesetterTests {
     // This test documents current behavior for future improvement
   }
 
+  @available(iOS 17.0, *)
   @Test
   func currentBehavior_ColoredExpressions() throws {
     let font = try makeFont()
@@ -2262,6 +2322,7 @@ struct TypesetterTests {
     // This test documents current behavior for future improvement
   }
 
+  @available(iOS 17.0, *)
   @Test
   func currentBehavior_MatricesWithSurroundingContent() throws {
     let font = try makeFont()
@@ -2278,6 +2339,7 @@ struct TypesetterTests {
     // This test documents current behavior for future improvement
   }
 
+  @available(iOS 17.0, *)
   @Test
   func realWorldExample_QuadraticFormula() throws {
     let font = try makeFont()
@@ -2294,6 +2356,7 @@ struct TypesetterTests {
     #expect(display!.width > 0)
   }
 
+  @available(iOS 17.0, *)
   @Test
   func realWorldExample_ComplexFraction() throws {
     let font = try makeFont()
@@ -2310,6 +2373,7 @@ struct TypesetterTests {
     #expect(display!.width > 0)
   }
 
+  @available(iOS 17.0, *)
   @Test
   func realWorldExample_MixedOperationsWithFractions() throws {
     let font = try makeFont()
@@ -2334,6 +2398,7 @@ struct TypesetterTests {
 
   // MARK: - Large Operator Tests (NEWLY FIXED!)
 
+  @available(iOS 17.0, *)
   @Test
   func complexDisplay_LargeOperatorStaysInlineWhenFits() throws {
     let font = try makeFont()
@@ -2353,6 +2418,7 @@ struct TypesetterTests {
     }
   }
 
+  @available(iOS 17.0, *)
   @Test
   func complexDisplay_LargeOperatorBreaksWhenTooWide() throws {
     let font = try makeFont()
@@ -2375,6 +2441,7 @@ struct TypesetterTests {
     }
   }
 
+  @available(iOS 17.0, *)
   @Test
   func complexDisplay_MultipleLargeOperators() throws {
     let font = try makeFont()
@@ -2397,6 +2464,7 @@ struct TypesetterTests {
 
   // MARK: - Delimiter Tests (NEWLY FIXED!)
 
+  @available(iOS 17.0, *)
   @Test
   func complexDisplay_DelimitersStayInlineWhenFit() throws {
     let font = try makeFont()
@@ -2415,6 +2483,7 @@ struct TypesetterTests {
     }
   }
 
+  @available(iOS 17.0, *)
   @Test
   func complexDisplay_DelimitersBreakWhenTooWide() throws {
     let font = try makeFont()
@@ -2437,6 +2506,7 @@ struct TypesetterTests {
     }
   }
 
+  @available(iOS 17.0, *)
   @Test
   func complexDisplay_NestedDelimitersWithWrapping() throws {
     let font = try makeFont()
@@ -2458,6 +2528,7 @@ struct TypesetterTests {
     }
   }
 
+  @available(iOS 17.0, *)
   @Test
   func complexDisplay_MultipleDelimiters() throws {
     let font = try makeFont()
@@ -2478,6 +2549,7 @@ struct TypesetterTests {
 
   // MARK: - Color Tests (NEWLY FIXED!)
 
+  @available(iOS 17.0, *)
   @Test
   func complexDisplay_ColoredExpressionStaysInlineWhenFits() throws {
     let font = try makeFont()
@@ -2496,6 +2568,7 @@ struct TypesetterTests {
     }
   }
 
+  @available(iOS 17.0, *)
   @Test
   func complexDisplay_ColoredExpressionBreaksWhenTooWide() throws {
     let font = try makeFont()
@@ -2520,6 +2593,7 @@ struct TypesetterTests {
 
   // Removed testComplexDisplay_ColoredContentWraps - colored expression tests above are sufficient
 
+  @available(iOS 17.0, *)
   @Test
   func complexDisplay_MultipleColoredSections() throws {
     let font = try makeFont()
@@ -2540,6 +2614,7 @@ struct TypesetterTests {
 
   // MARK: - Matrix Tests (NEWLY FIXED!)
 
+  @available(iOS 17.0, *)
   @Test
   func complexDisplay_SmallMatrixStaysInlineWhenFits() throws {
     let font = try makeFont()
@@ -2558,6 +2633,7 @@ struct TypesetterTests {
     }
   }
 
+  @available(iOS 17.0, *)
   @Test
   func complexDisplay_MatrixBreaksWhenTooWide() throws {
     let font = try makeFont()
@@ -2576,6 +2652,7 @@ struct TypesetterTests {
     }
   }
 
+  @available(iOS 17.0, *)
   @Test
   func complexDisplay_MatrixWithSurroundingContent() throws {
     let font = try makeFont()
@@ -2599,6 +2676,7 @@ struct TypesetterTests {
 
   // MARK: - Integration Tests (All Complex Displays)
 
+  @available(iOS 17.0, *)
   @Test
   func complexDisplay_MixedComplexElements() throws {
     let font = try makeFont()
@@ -2624,6 +2702,7 @@ struct TypesetterTests {
     }
   }
 
+  @available(iOS 17.0, *)
   @Test
   func complexDisplay_RealWorldQuadraticWithColor() throws {
     let font = try makeFont()
@@ -2647,6 +2726,7 @@ struct TypesetterTests {
 
   // MARK: - Regression Test for Sum Equation Layout Bug
 
+  @available(iOS 17.0, *)
   @Test
   func sumEquationWithFraction_CorrectOrdering() throws {
     let font = try makeFont()
@@ -2700,6 +2780,7 @@ struct TypesetterTests {
     #expect(foundFraction)
   }
 
+  @available(iOS 17.0, *)
   @Test
   func sumEquationWithFraction_WithWidthConstraint() throws {
     // Test case for: \(\sum_{i=1}^{n} i = \frac{n(n+1)}{2}\) with width constraint
@@ -2771,6 +2852,7 @@ struct TypesetterTests {
 
   // MARK: - Improved Script Handling Tests
 
+  @available(iOS 17.0, *)
   @Test
   func scriptedAtoms_StayInlineWhenFit() throws {
     let font = try makeFont()
@@ -2802,6 +2884,7 @@ struct TypesetterTests {
     #expect(display!.width < maxWidth)
   }
 
+  @available(iOS 17.0, *)
   @Test
   func scriptedAtoms_BreakWhenTooWide() throws {
     let font = try makeFont()
@@ -2829,6 +2912,7 @@ struct TypesetterTests {
     }
   }
 
+  @available(iOS 17.0, *)
   @Test
   func mixedScriptedAndNonScripted() throws {
     let font = try makeFont()
@@ -2851,6 +2935,7 @@ struct TypesetterTests {
     }
   }
 
+  @available(iOS 17.0, *)
   @Test
   func subscriptsAndSuperscripts() throws {
     let font = try makeFont()
@@ -2872,6 +2957,7 @@ struct TypesetterTests {
     }
   }
 
+  @available(iOS 17.0, *)
   @Test
   func realWorld_QuadraticExpansion() throws {
     let font = try makeFont()
@@ -2893,6 +2979,7 @@ struct TypesetterTests {
     }
   }
 
+  @available(iOS 17.0, *)
   @Test
   func realWorld_Polynomial() throws {
     let font = try makeFont()
@@ -2914,6 +3001,7 @@ struct TypesetterTests {
     }
   }
 
+  @available(iOS 17.0, *)
   @Test
   func scriptedAtoms_NoBreakingWithoutConstraint() throws {
     let font = try makeFont()
@@ -2939,6 +3027,7 @@ struct TypesetterTests {
     #expect(lineBreakCount == 0)
   }
 
+  @available(iOS 17.0, *)
   @Test
   func complexScriptedExpression() throws {
     let font = try makeFont()
@@ -2962,6 +3051,7 @@ struct TypesetterTests {
 
   // MARK: - Break Quality Scoring Tests
 
+  @available(iOS 17.0, *)
   @Test
   func breakQuality_PreferAfterBinaryOperator() throws {
     let font = try makeFont()
@@ -2991,6 +3081,7 @@ struct TypesetterTests {
     #expect(hasGoodBreak)
   }
 
+  @available(iOS 17.0, *)
   @Test
   func breakQuality_PreferAfterRelation() throws {
     let font = try makeFont()
@@ -3017,6 +3108,7 @@ struct TypesetterTests {
     #expect(hasGoodBreak)
   }
 
+  @available(iOS 17.0, *)
   @Test
   func breakQuality_AvoidAfterOpenBracket() throws {
     let font = try makeFont()
@@ -3044,6 +3136,7 @@ struct TypesetterTests {
     #expect(!(hasBadBreak))
   }
 
+  @available(iOS 17.0, *)
   @Test
   func breakQuality_LookAheadFindsBetterBreak() throws {
     let font = try makeFont()
@@ -3073,6 +3166,7 @@ struct TypesetterTests {
     #expect(hasGoodBreak)
   }
 
+  @available(iOS 17.0, *)
   @Test
   func breakQuality_MultipleOperators() throws {
     let font = try makeFont()
@@ -3104,6 +3198,7 @@ struct TypesetterTests {
     }
   }
 
+  @available(iOS 17.0, *)
   @Test
   func breakQuality_ComplexExpression() throws {
     let font = try makeFont()
@@ -3125,6 +3220,7 @@ struct TypesetterTests {
     }
   }
 
+  @available(iOS 17.0, *)
   @Test
   func breakQuality_NoBreakWhenNotNeeded() throws {
     let font = try makeFont()
@@ -3150,6 +3246,7 @@ struct TypesetterTests {
     #expect(lineBreakCount == 0)
   }
 
+  @available(iOS 17.0, *)
   @Test
   func breakQuality_PenaltyOrdering() throws {
     let font = try makeFont()
@@ -3180,6 +3277,7 @@ struct TypesetterTests {
 
   // MARK: - Dynamic Line Height Tests
 
+  @available(iOS 17.0, *)
   @Test
   func dynamicLineHeight_TallContentHasMoreSpacing() throws {
     let font = try makeFont()
@@ -3215,6 +3313,7 @@ struct TypesetterTests {
     }
   }
 
+  @available(iOS 17.0, *)
   @Test
   func dynamicLineHeight_RegularContentHasReasonableSpacing() throws {
     let font = try makeFont()
@@ -3248,6 +3347,7 @@ struct TypesetterTests {
     }
   }
 
+  @available(iOS 17.0, *)
   @Test
   func dynamicLineHeight_MixedContentVariesSpacing() throws {
     let font = try makeFont()
@@ -3272,6 +3372,7 @@ struct TypesetterTests {
     #expect(totalHeight > 0)
   }
 
+  @available(iOS 17.0, *)
   @Test
   func dynamicLineHeight_LargeOperatorsGetAdequateSpace() throws {
     let font = try makeFont()
@@ -3303,6 +3404,7 @@ struct TypesetterTests {
     }
   }
 
+  @available(iOS 17.0, *)
   @Test
   func dynamicLineHeight_ConsistentWithinSimilarContent() throws {
     let font = try makeFont()
@@ -3336,6 +3438,7 @@ struct TypesetterTests {
     }
   }
 
+  @available(iOS 17.0, *)
   @Test
   func dynamicLineHeight_NoRegressionOnSingleLine() throws {
     let font = try makeFont()
@@ -3352,6 +3455,7 @@ struct TypesetterTests {
     #expect(yPositions.count == 1)
   }
 
+  @available(iOS 17.0, *)
   @Test
   func dynamicLineHeight_DeepFractionsGetExtraSpace() throws {
     let font = try makeFont()
@@ -3373,6 +3477,7 @@ struct TypesetterTests {
     #expect(display!.children.count > 0)
   }
 
+  @available(iOS 17.0, *)
   @Test
   func dynamicLineHeight_RadicalsWithIndicesGetSpace() throws {
     let font = try makeFont()

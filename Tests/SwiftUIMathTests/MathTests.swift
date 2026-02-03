@@ -9,6 +9,7 @@
   struct MathTests {
     private let layout = SwiftUISnapshotLayout.device(config: .iPhone8)
 
+    @available(iOS 17.0, *)
     @Test
     func displayAndInlineStyles() {
       let view = VStack(alignment: .leading, spacing: 16) {
@@ -26,6 +27,7 @@
       assertSnapshot(of: view, as: .image(layout: layout))
     }
 
+    @available(iOS 17.0, *)
     @Test
     func multicolorExpressions() {
       let view = VStack(alignment: .leading, spacing: 16) {
@@ -44,6 +46,7 @@
       assertSnapshot(of: view, as: .image(layout: layout))
     }
 
+    @available(iOS 17.0, *)
     @Test
     func matricesAndCases() {
       let view = VStack(alignment: .leading, spacing: 16) {
@@ -61,6 +64,7 @@
       assertSnapshot(of: view, as: .image(layout: layout))
     }
 
+    @available(iOS 17.0, *)
     @Test
     func largeOperatorsAndLimits() {
       let view = VStack(alignment: .leading, spacing: 16) {
@@ -74,6 +78,7 @@
       assertSnapshot(of: view, as: .image(layout: layout))
     }
 
+    @available(iOS 17.0, *)
     @Test
     func inlineTextWrapping() {
       let view = VStack(alignment: .leading, spacing: 16) {
